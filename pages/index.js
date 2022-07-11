@@ -8,7 +8,7 @@ import { Product, FooterBanner, HeroBanner } from '../components'
 const Home = ({products, bannerData}) => {
   return (
     <>
-      <HeroBanner />
+      <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
         {console.log(bannerData)}
       <div className='products-heading'>
         <h2>Best Selling Products</h2>
@@ -17,11 +17,13 @@ const Home = ({products, bannerData}) => {
 
       <div className='products-container'>
         {products?.map(
-          (product)=>(product.name)
+          (product)=><Product key={product._id} product={product} />
         )}
       </div>
-
-      {/* <FooterBanner /> */}
+      
+      <FooterBanner footerBanner={bannerData && bannerData[0]}/>
+      
+      
     </> 
     
     )
